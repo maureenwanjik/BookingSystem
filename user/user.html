@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Dome Booking System</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <div id="booking-container" class="container">
+        <header>
+            <h1 class="center-header">Dome Booking System DeKUT</h1>
+        </header>
+        <div class="main-content-flex">
+            <aside class="sidebar" id="user-sidebar">
+                <button id="user-home-btn" class="sidebar-btn active">Home</button>
+                <button id="show-booking-btn" class="sidebar-btn">Make Booking</button>
+                <button id="show-my-bookings-btn" class="sidebar-btn">My Bookings</button>
+            </aside>
+            <div class="main-sections">
+                <section id="home-section" class="content-section">
+                    <h2>Welcome to the Dome Booking System</h2>
+                    <div class="dome-info">
+                        <h3>Lenana RC 2 Dome</h3>
+                        <ul>
+                            <li><strong>Capacity:</strong> 50 people</li>
+                            <li><strong>Facilities:</strong> Projector, Whiteboard, Sound System</li>
+                        </ul>
+                        <h3>Nelion RC 3 Dome</h3>
+                        <ul>
+                            <li><strong>Capacity:</strong> 30 people</li>
+                            <li><strong>Facilities:</strong> Projector, Whiteboard</li>
+                        </ul>
+                        <h3>How to Book</h3>
+                        <ol>
+                            <li>Login with your DKUT credentials</li>
+                            <li>Select your preferred dome and date</li>
+                            <li>Check available time slots</li>
+                            <li>Submit your booking request</li>
+                            <li>Receive confirmation via email</li>
+                        </ol>
+                    </div>
+                </section>
+                <section id="booking-section" class="content-section hidden">
+                    <h2>Book a Dome</h2>
+                    <form id="booking-form-section">
+                        <div class="form-group">
+                            <label for="dome-select">Select Dome:</label>
+                            <select id="dome-select" required>
+                                <option value="">-- Select a Dome --</option>
+                                <option value="Lenana">Lenana</option>
+                                <option value="Nelion">Nelion</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-date">Date:</label>
+                            <input type="date" id="booking-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-time">Time:</label>
+                            <select id="booking-time" required>
+                                <option value="">-- Select Time --</option>
+                                <option value="08:00-10:00">08:00 - 10:00</option>
+                                <option value="10:00-12:00">10:00 - 12:00</option>
+                                <option value="12:00-14:00">12:00 - 14:00</option>
+                                <option value="14:00-16:00">14:00 - 16:00</option>
+                                <option value="16:00-18:00">16:00 - 18:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose">Purpose:</label>
+                            <textarea id="purpose" rows="3" required></textarea>
+                        </div>
+                        <button type="submit">Submit Booking</button>
+                    </form>
+                    <div id="booking-status"></div>
+                    <footer class="custom-footer">
+                        <div>
+                            <strong>Marketing Department</strong><br>
+                            Dedan Kimathi University of Technology<br>
+                            P.O Box 657-10100  Nyeri<br>
+                            Mobile Phone: 0713 123021<br>
+                            Facebook: Dedan Kimathi University of Technology<br>
+                            @DeKUT Kenya<br>
+                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael Hyatt</span>
+                        </div>
+                    </footer>
+                </section>
+                <section id="my-bookings-section" class="content-section hidden">
+                    <h2>My Bookings</h2>
+                    <div id="bookings-list">
+                        <p>No bookings yet.</p>
+                    </div>
+                    <footer class="custom-footer">
+                        <div>
+                            <strong>Marketing Department</strong><br>
+                            Dedan Kimathi University of Technology<br>
+                            P.O Box 657-10100  Nyeri<br>
+                            Mobile Phone: 0713 123021<br>
+                            Facebook: Dedan Kimathi University of Technology<br>
+                            @DeKUT Kenya<br>
+                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael Hyatt</span>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="user.js"></script>
+</body>
+</html>
