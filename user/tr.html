@@ -17,7 +17,7 @@
                 <button id="user-home-btn" class="sidebar-btn active">Home</button>
                 <button id="show-booking-btn" class="sidebar-btn">Make Booking</button>
                 <button id="show-my-bookings-btn" class="sidebar-btn">My Bookings</button>
-                <button id="show-appointments-btn" class="sidebar-btn">Book Appointment</button>
+                <button id="show-appointments-btn" class="sidebar-btn">Book Appointment</button> <!-- New Button -->
             </aside>
             <div class="main-sections">
                 <section id="home-section" class="content-section">
@@ -51,24 +51,16 @@
                             <label for="dome-select">Select Dome:</label>
                             <select id="dome-select" required>
                                 <option value="">-- Select a Dome --</option>
-                                <option value="Lenana">Lenana(capacity 70)</option>
-                                <option value="Nelion">Nelion(capacity 130)</option>
-                                <option value="Auditorium">Auditorium(capacity 300)</option>
-                                <option value="Freedom Hall">Freedom Hall(capacity 1200)</option>
-                                <option value="Conservancy">Conservancy(capacity 130)</option>
-                                <option value="Satima">Satima(capacity 150)</option>
-                                <option value="Autrium">Autrium(capacity 500)</option>
-                                <option value="Munyeki">Munyeki(capacity 10)</option>
-                                <option value="Main Boardroom">Main Boardroom(capacity 50)</option>
+                                <option value="Lenana">Lenana(70)</option>
+                                <option value="Nelion">Nelion(130)</option>
+                                <option value="Nelion">Auditorium(300)</option>
+                                <option value="Nelion">Freedom Hall(1200)</option>
+                                <option value="Nelion">Conservancy(130)</option>
+                                <option value="Nelion">Satima(150)</option>
+                                <option value="Nelion">Autrium(500)</option>
+                                <option value="Nelion">Munyeki(10)</option>
+                                <option value="Nelion">Main Boardroom(50)</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="booking-capacity">Number of People:</label>
-                            <input type="number" id="booking-capacity" min="1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="department">Department:</label>
-                            <input type="text" id="department" required>
                         </div>
                         <div class="form-group">
                             <label for="booking-date">Date:</label>
@@ -83,7 +75,7 @@
                             <input type="time" id="booking-endtime" required>
                         </div>
                         <div class="form-group full-width">
-                            <label for="purpose">Events:</label>
+                            <label for="purpose">Reason :</label>
                             <textarea id="purpose" rows="3" required></textarea>
                         </div>
                         <button type="submit">Submit Booking</button>

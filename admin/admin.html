@@ -1,10 +1,12 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Dome Booking System</title>
     <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
     <div id="booking-container" class="container">
         <header>
@@ -16,6 +18,7 @@
                 <button id="show-admin-dashboard-btn" class="sidebar-btn">Admin Dashboard</button>
                 <button id="show-booking-btn-admin" class="sidebar-btn">Make Booking</button>
                 <button id="show-my-bookings-btn-admin" class="sidebar-btn">My Bookings</button>
+                <button id="show-appointments-btn" class="sidebar-btn">Book Appointment</button>
             </aside>
             <div class="main-sections">
                 <section id="home-section" class="content-section">
@@ -45,31 +48,31 @@
                     <h2>Admin Dashboard</h2>
                     <div class="admin-controls">
                         <div>
-                            <h3>Pending Approvals</h3>
-                            <div id="pending-approvals"></div>
-                        </div>
-                        <div>
-                            <h3>All Bookings</h3>
-                            <div id="all-bookings"></div>
-                        </div>
-                        <div>
-                            <h3>Delete Bookings</h3>
-                            <button id="delete-all-bookings-btn">Delete All Bookings</button>
-                            <div id="report-output"></div>
+                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                <button id="show-pending-approvals-btn">Pending Approvals</button>
+                                <button id="show-all-bookings-btn">All Bookings</button>
+                                <button id="view-appointments-btn">View Appointments</button>
+                            </div>
+                            <!-- Tables appear here based on which button is pressed -->
+                            <div id="pending-approvals" style="display:none;"></div>
+                            <div id="all-bookings" style="display:none;"></div>
+                            <div id="admin-appointments-table" style="display:none;"></div>
                         </div>
                     </div>
                     <footer class="custom-footer">
                         <div>
                             <strong>Marketing Department</strong><br>
                             Dedan Kimathi University of Technology<br>
-                            P.O Box 657-10100  Nyeri<br>
+                            P.O Box 657-10100 Nyeri<br>
                             Mobile Phone: 0713 123021<br>
                             Facebook: Dedan Kimathi University of Technology<br>
                             @DeKUT Kenya<br>
-                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael Hyatt</span>
+                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael
+                                Hyatt</span>
                         </div>
                     </footer>
                 </section>
+
                 <section id="booking-section" class="content-section hidden">
                     <h2>Book a Dome</h2>
                     <form id="booking-form-section">
@@ -77,33 +80,94 @@
                             <label for="dome-select">Select Dome:</label>
                             <select id="dome-select" required>
                                 <option value="">-- Select a Dome --</option>
-                                <option value="Lenana">Lenana</option>
-                                <option value="Nelion">Nelion</option>
+                                <option value="Lenana">Lenana(capacity 70)</option>
+                                <option value="Nelion">Nelion(capacity 130)</option>
+                                <option value="Auditorium">Auditorium(capacity 300)</option>
+                                <option value="Freedom Hall">Freedom Hall(capacity 1200)</option>
+                                <option value="Conservancy">Conservancy(capacity 130)</option>
+                                <option value="Satima">Satima(capacity 150)</option>
+                                <option value="Autrium">Autrium(capacity 500)</option>
+                                <option value="Munyeki">Munyeki(capacity 10)</option>
+                                <option value="Main Boardroom">Main Boardroom(capacity 50)</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="number-of-people">Number of People:</label>
+                            <input type="number" id="number-of-people" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department:</label>
+                            <input type="text" id="department" required>
                         </div>
                         <div class="form-group">
                             <label for="booking-date">Date:</label>
                             <input type="date" id="booking-date" required>
                         </div>
                         <div class="form-group">
-                            <label for="booking-time">Time:</label>
-                            <select id="booking-time" required>
-                                <option value="">-- Select Time --</option>
-                                <option value="08:00-10:00">08:00 - 10:00</option>
-                                <option value="10:00-12:00">10:00 - 12:00</option>
-                                <option value="12:00-14:00">12:00 - 14:00</option>
-                                <option value="14:00-16:00">14:00 - 16:00</option>
-                                <option value="16:00-18:00">16:00 - 18:00</option>
-                            </select>
+                            <label for="booking-starttime">Start Time:</label>
+                            <input type="time" id="booking-starttime" required>
                         </div>
                         <div class="form-group">
-                            <label for="purpose">Purpose:</label>
+                            <label for="booking-endtime">End Time</label>
+                            <input type="time" id="booking-endtime" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="purpose">Events :</label>
                             <textarea id="purpose" rows="3" required></textarea>
                         </div>
                         <button type="submit">Submit Booking</button>
                     </form>
                     <div id="booking-status"></div>
                 </section>
+
+                <section id="appointments-section" class="content-section hidden">
+                    <h2>Book an Appointment</h2>
+                    <form id="appointment-form-section">
+                        <div class="form-group">
+                            <label for="appointment-date">Date:</label>
+                            <input type="date" id="appointment-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-starttime"> Start Time:</label>
+                            <input type="time" id="appointment-starttime" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-endtime"> End Time:</label>
+                            <input type="time" id="appointment-endtime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="person-select"><i class="fas fa-user-tie"></i> Appointment With:</label>
+                            <select id="person-select" required>
+                                <option value="">-- Select a Person --</option>
+                                <option value="Prof.Esther">Prof.Esther(DVC)</option>
+                                <option value="Prof.Peter Muchiri">Prof.Peter Muchiri(VC)</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="appointment-reason">Reason:</label>
+                            <textarea id="appointment-reason" rows="3" required></textarea>
+                        </div>
+                        <button type="submit">Book Appointment</button>
+                    </form>
+                    <div id="appointment-status"></div>
+                    <div id="appointments-list">
+                        <!-- Table of appointments will be rendered here -->
+                    </div>
+                    <footer class="custom-footer">
+                        <div>
+                            <strong>Marketing Department</strong><br>
+                            Dedan Kimathi University of Technology<br>
+                            P.O Box 657-10100 Nyeri<br>
+                            Mobile Phone: 0713 123021<br>
+                            Facebook: Dedan Kimathi University of Technology<br>
+                            @DeKUT Kenya<br>
+                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael
+                                Hyatt</span>
+                        </div>
+                    </footer>
+                </section>
+
                 <section id="my-bookings-section" class="content-section hidden">
                     <h2>My Bookings</h2>
                     <div id="bookings-list">
@@ -113,11 +177,12 @@
                         <div>
                             <strong>Marketing Department</strong><br>
                             Dedan Kimathi University of Technology<br>
-                            P.O Box 657-10100  Nyeri<br>
+                            P.O Box 657-10100 Nyeri<br>
                             Mobile Phone: 0713 123021<br>
                             Facebook: Dedan Kimathi University of Technology<br>
                             @DeKUT Kenya<br>
-                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael Hyatt</span>
+                            <span class="footer-quote">“Marketing is really just about sharing your passion.” Michael
+                                Hyatt</span>
                         </div>
                     </footer>
                 </section>
@@ -126,4 +191,5 @@
     </div>
     <script src="admin.js"></script>
 </body>
+
 </html>
